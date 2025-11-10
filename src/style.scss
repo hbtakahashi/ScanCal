@@ -1,0 +1,24 @@
+// スキャンボタンと連動させるためのカメラ入力要素を隠す
+#cameraInput {
+  // 完全に透明にする
+  opacity: 0; 
+  
+  // マウスイベントを無効にする（誤クリック防止）
+  pointer-events: none; 
+  
+  // 画面の外に移動させて、誤って表示領域を占有しないようにする
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0); 
+}
+
+// ユーザーがクリックする実際のボタン（見栄えを整える）
+#scanButton {
+  padding: 10px 20px;
+  background-color: #42b883; // Viteカラーにしてみました
+  color: white;
+  border: none;
+  cursor: pointer;
+}

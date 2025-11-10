@@ -1,24 +1,24 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import './style.scss'
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
+const appHtml = `
+  <div class="input-section">
+    <h2>撮影</h2>
+    <input type="file" accept="image/*" capture="environment" id="cameraInput">
+    <button id="scanButton">画像をスキャンしてデータを抽出</button>
   </div>
-`
+  
+  <section id="results-area">
+    <h2>抽出結果</h2>
+    <p>撮影した画像からテキストを抽出した結果がここに表示されます。</p>
+    </section>
+`;
+document.querySelector('#app').innerHTML = appHtml;
 
-setupCounter(document.querySelector('#counter'))
+const cameraInput = document.querySelector('#cameraInput'); // input type="file"
+const scanButton = document.querySelector('#scanButton');   // スキャンボタン
+
+cameraInput.addEventListener('change', handleImageSelection);
+scanButton.addEventListener('click', () => {
+  // 実際には scanButton を押しても cameraInput をクリックしたのと同じ動作にしたいので
+  cameraInput.click();
+});
